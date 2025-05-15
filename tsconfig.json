@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "@tsconfig/node-ts/tsconfig.json",
+    "@tsconfig/node-lts/tsconfig.json"
+  ],
+  "compilerOptions": {
+    "outDir": "./dist" /* Redirect output structure to the directory. */,
+    "rootDir": "./src" /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
+    "sourceMap": true /* Generates corresponding '.map' file. */,
+    "declaration": true /* Generates corresponding '.d.ts' file. */
+  },
+  "include": [
+    "src/**/*" /* Specifies an array of filenames or patterns to include in the program. */
+  ],
+  "exclude": [
+    "node_modules" /* Specifies an array of filenames or patterns that should be skipped when resolving include. */,
+    "**/*.test.ts" /* Exclude test files from the main build */
+  ]
+}

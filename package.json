@@ -1,0 +1,36 @@
+{
+  "name": "explainshell-ts-cli",
+  "version": "0.1.0",
+  "description": "A CLI tool to get explanations from explainshell.com",
+  "main": "dist/main.js",
+  "type": "module",
+  "bin": {
+    "explain": "dist/main.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "dev": "tsx watch src/main.ts",
+    "prestart": "npm run build",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "cli",
+    "explainshell",
+    "shell",
+    "typescript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.9.0",
+    "cheerio": "^1.0.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node-lts": "^22.0.1",
+    "@tsconfig/node-ts": "^23.6.1",
+    "@types/node": "^22.15.18",
+    "tsx": "^4.7.1",
+    "typescript": "^5.8.3"
+  }
+}

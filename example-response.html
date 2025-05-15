@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>explainshell.com - for user in $(cut -f1 -d: /etc/passwd); do crontab -u $user -l 2&gt;/dev/null; done</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+    
+        <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css" rel="stylesheet" media="screen" id="bootstrapCSS">
+    
+        <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+        <link href="/static/css/es.css" rel="stylesheet" media="screen">
+        <link href='//fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
+        
+    </head>
+    <body data-theme=default>
+        <div class="container">
+            <div class="small-push"></div>
+            <div class="header">
+                <div class="text-center logo">
+                    <a href="/">
+                        explain<span class="shell">shell</span>.<span class="dotcom">com</span>
+                    </a>
+                </div>
+                <div style="position: relative;">
+                    <ul class="inline menu">
+                      <li><a href="/about">about</a></li>
+                      <li><a href="https://github.com/idank/explainshell"><i class="icon-github"></i></a></li>
+                      <li><form action='/explain' method='get'><input id="top-search" name='cmd' type="text" autocapitalize="off" autocorrect="off" placeholder="explain..."></input></form></li>
+                      <li id="themeContainer" class="dropdown">
+                        <span data-toggle="dropdown">theme</span>
+                        <b class="caret" data-toggle="dropdown"></b>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                            <li><a tabindex="-1" href="#" data-theme-name="default">Light</a></li>
+                            <li><a tabindex="-1" href="#" data-theme-name="dark">Dark</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                </div>
+                <div class="small-push"></div>
+                <div class="text-center">
+                    
+                </div>
+            </div>
+            
+            <div id="navigate" style="position: relative;" class="small-push"></div>
+            <!--<span style="background-color:white;position: fixed; bottom:0; right:0;" id="coords"></span>-->
+            <div class="push"></div>
+            <div id="bump-fixer">
+                <div id="command-wrapper">
+                    <svg id="canvas">
+                    </svg>
+                    <div id="command">
+                    <span class="shell hasexpansion" helpref="help-0">for&nbsp;user&nbsp;in&nbsp;$(<span class="expansion-substitution"><a href="/explain?cmd=cut+-f1+-d%3A+%2Fetc%2Fpasswd" title="Zoom in to nested command">cut -f1 -d: /etc/passwd</a></span>); do</span> <span class="dropdown">
+                    <span style="word-spacing: 0px;">
+                    <b class="caret" data-toggle="dropdown"></b>
+                    <span class="command0 simplecommandstart" helpref="help-2"><a href="/explain/1/crontab">crontab(1)</a></span>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                      <li>other manpages</li>
+                      <li class="divider"></li>
+                      <li><a tabindex="-1" href="/explain?cmd=for%20user%20in%20%24%28cut%20-f1%20-d%3A%20/etc/passwd%29%3B%20do%20crontab.1posix%20-u%20%24user%20-l%202%3E/dev/null%3B%20done">crontab(1posix)</a></li>
+                    </ul>
+                    </span>
+                </span> <span class="command0 unknown hasexpansion">-u&nbsp;<span class="expansion-parameter-param">$user</span> -l</span> <span class="shell" helpref="help-1">2&gt;/dev/null</span><span class="shell" helpref="help-0">; done</span>
+                    </div>
+                    <div style="height: 5px;"></div>
+                    <div style="height: 100px;"></div>
+                </div>
+            </div>
+            <div>
+                <table id="help" width="100%">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <pre class="help-box" id="help-0"><b>for</b> <u>name</u> [ [ <b>in</b> [ <u>word</u> <u>...</u> ] ] ; ] <b>do</b> <u>list</u> ; <b>done</b>
+       The  list of words following <b>in</b> is expanded, generating a list of items.  The variable <u>name</u> is set
+       to each element of this list in turn, and <u>list</u> is executed each time.  If the <b>in</b> <u>word</u> is  omitted,
+       the  <b>for</b>  command  executes  <u>list</u>  once  for each positional parameter that is set (see <b>PARAMETERS</b>
+       below).  The return status is the exit status of the last command that executes.  If the expansion
+       of  the  items  following  <b>in</b>  results  in an empty list, no commands are executed, and the return
+       status is 0.</pre>
+                            </td>
+                        </tr><tr>
+                            <td>
+                                <pre class="help-box" id="help-2">maintain crontab files for individual users (Vixie Cron)</pre>
+                            </td>
+                        </tr><tr>
+                            <td>
+                                <pre class="help-box" id="help-1">Before a command is executed, its input and output may be <u>redirected</u> using a special notation interpreted
+by  the  shell.   Redirection  may  also  be used to open and close files for the current shell execution
+environment.  The following redirection operators may precede or appear anywhere within a <u>simple</u>  <u>command</u>
+or may follow a <u>command</u>.  Redirections are processed in the order they appear, from left to right.
+
+<b>Redirecting</b> <b>Output</b>
+    Redirection of output causes the file whose name results from the expansion of  <u>word</u>  to  be  opened  for
+    writing  on  file descriptor <u>n</u>, or the standard output (file descriptor 1) if <u>n</u> is not specified.  If the
+    file does not exist it is created; if it does exist it is truncated to zero size.
+
+    The general format for redirecting output is:
+
+           [<u>n</u>]<b>&gt;</b><u>word</u>
+
+    If the redirection operator is <b>&gt;</b>, and the <b>noclobber</b> option to the  <b>set</b>  builtin  has  been  enabled,  the
+    redirection  will  fail if the file whose name results from the expansion of <u>word</u> exists and is a regular
+    file.  If the redirection operator is <b>&gt;|</b>, or the redirection operator is <b>&gt;</b> and the  <b>noclobber</b>  option  to
+    the  <b>set</b>  builtin  command  is  not  enabled, the redirection is attempted even if the file named by <u>word</u>
+    exists.</pre>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="push"></div><div class="text-center"><small>
+
+source manpages: 
+<a href="http://manpages.ubuntu.com/manpages/precise/en/man1/crontab.html">crontab</a>
+
+</small></div>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script src="/static/js/es.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.1.6/d3.min.js"></script>
+        <script type="text/javascript">
+            var $window = $(window),
+                helppres = $('#help pre');
+
+            adjustcommandfontsize();
+            currentgroup = initialize();
+            navigation();
+
+            $(document).ready(function() {
+                // set the query in the top search box from the url. assumes we
+                // take a single parameter.
+                if (window.location.search.split("&").length == 1) {
+                    var cmdquery = window.location.search.substr("?cmd=".length);
+                    $("#top-search").val(decodeURIComponent(cmdquery.replace(/\+/g, ' ')));
+                }
+
+                // when #command-wrapper position is changed to fixed, it'll be removed
+                // from the normal flow, and everything below it will up. we use this div
+                // to prevent that.
+                $('#bump-fixer').height($("#command-wrapper").height());
+
+                $('#command-wrapper').affix({
+                    offset: { top: $('#command-wrapper').offset().top-10 }
+                });
+
+                drawgrouplines(currentgroup.commandselector);
+
+                var throttled = _.throttle(function() {
+                    draw()
+                }, 10);
+
+                $window.scroll(throttled);
+                $window.resize(throttled);
+            });
+        </script>
+    </body>
+</html>

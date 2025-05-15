@@ -1,0 +1,44 @@
+for user in $(cut -f1 -d: /etc/passwd); do […] ; done
+
+    for name [ [ in [ word ... ] ] ; ] do list ; done
+           The  list of words following in is expanded, generating a list of items.  The variable name is set
+           to each element of this list in turn, and list is executed each time.  If the in word is  omitted,
+           the  for  command  executes  list  once  for each positional parameter that is set (see PARAMETERS
+           below).  The return status is the exit status of the last command that executes.  If the expansion
+           of  the  items  following  in  results  in an empty list, no commands are executed, and the return
+           status is 0.
+
+    [ cut -f1 -d: /etc/passwd -> https://explainshell.com/explain?cmd=cut+-f1+-d%3A+%2Fetc%2Fpasswd ]
+
+crontab
+
+    maintain crontab files for individual users (Vixie Cron)
+
+    [ crontab -> https://explainshell.com/explain/1/crontab ]
+
+-u $user -l
+
+    Parameter Expansion
+    The ’$’ character introduces parameter expansion, command substitution, or arithmetic expansion. The parameter name or symbol to be expanded may be enclosed in braces, which are optional but serve to protect the variable to be expanded from characters immediately following it which could be interpreted as part of the name.
+
+2>/dev/null
+
+    Before a command is executed, its input and output may be redirected using a special notation interpreted
+    by  the  shell.   Redirection  may  also  be used to open and close files for the current shell execution
+    environment.  The following redirection operators may precede or appear anywhere within a simple  command
+    or may follow a command.  Redirections are processed in the order they appear, from left to right.
+
+    Redirecting Output
+        Redirection of output causes the file whose name results from the expansion of  word  to  be  opened  for
+        writing  on  file descriptor n, or the standard output (file descriptor 1) if n is not specified.  If the
+        file does not exist it is created; if it does exist it is truncated to zero size.
+
+        The general format for redirecting output is:
+
+              [n]>word
+
+        If the redirection operator is >, and the noclobber option to the  set  builtin  has  been  enabled,  the
+        redirection  will  fail if the file whose name results from the expansion of word exists and is a regular
+        file.  If the redirection operator is >|, or the redirection operator is > and the  noclobber  option  to
+        the  set  builtin  command  is  not  enabled, the redirection is attempted even if the file named by word
+        exists.
