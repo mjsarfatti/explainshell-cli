@@ -24,14 +24,15 @@ async function fetchExplanationHTML(command: string): Promise<string> {
     const { data } = await axios.get(url);
     return data;
   } catch (error) {
+    let errorMessage = `Failed to fetch explanation from ${url}`;
     if (axios.isAxiosError(error)) {
-      console.error(`Error fetching explanation from ${url}: ${error.message}`);
+      errorMessage += `: ${error.message}`;
+    } else if (error instanceof Error) {
+      errorMessage += `: ${error.message}`;
     } else {
-      console.error(
-        `An unexpected error occurred while fetching explanation: ${error}`
-      );
+      errorMessage += `: ${String(error)}`;
     }
-    process.exit(1);
+    throw new Error(errorMessage); // Throw error instead of exiting
   }
 }
 
@@ -196,7 +197,16 @@ function formatOutput(parsedData: ParsedExplanation): string {
   return output.trim();
 }
 
-async function main() {
+export async function getExplanation(
+  commandToExplain: string
+): Promise<string> {
+  const html = await fetchExplanationHTML(commandToExplain);
+  // No specific !html check needed here as fetchExplanationHTML will throw on failure
+  const parsedData = parseHTML(html);
+  return formatOutput(parsedData);
+}
+
+async function mainCli() {
   const args = process.argv.slice(2);
   if (args.length === 0) {
     console.log("Usage: explainshell-cli <command_to_explain>");
@@ -204,22 +214,27 @@ async function main() {
     process.exit(1);
   }
   const commandToExplain = args.join(" ");
+  // console.log(`Fetching explanation for: \\"${commandToExplain}\\"...\\n`); // This was the original log line. Keep or remove as per preference.
 
-  console.log(`Fetching explanation for: "${commandToExplain}"...\n`);
-
-  const html = await fetchExplanationHTML(commandToExplain);
-  if (!html) {
-    // fetchExplanationHTML already handles errors and exits, but as a safeguard:
-    console.error("Failed to fetch HTML, cannot proceed.");
+  try {
+    const output = await getExplanation(commandToExplain);
+    console.log(output);
+  } catch (error) {
+    // Log the error message from the thrown error
+    console.error(
+      "An error occurred:",
+      error instanceof Error ? error.message : String(error)
+    );
     process.exit(1);
   }
-  const parsedData = parseHTML(html);
-  const formattedOutput = formatOutput(parsedData);
-
-  console.log(formattedOutput);
 }
 
-main().catch((error) => {
-  console.error("An unexpected error occurred in main execution:", error);
-  process.exit(1);
-});
+// Conditionally run mainCli only if the script is executed directly
+// (ESM way to check if module is main)
+// Resolve paths to be robust
+const scriptPath = new URL(import.meta.url).pathname;
+const executedScriptPath = process.argv[1];
+
+if (executedScriptPath === scriptPath) {
+  mainCli();
+}
