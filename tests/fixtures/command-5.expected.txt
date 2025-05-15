@@ -1,0 +1,75 @@
+cut
+
+    remove sections from each line of files
+
+    [ cut -> https://explainshell.com/explain/1/cut ]
+
+-d ' '
+
+    -d, --delimiter=DELIM
+           use DELIM instead of TAB for field delimiter
+
+-f 1
+
+    -f, --fields=LIST
+           select only these fields;  also print any line that contains no delimiter character, unless the -s
+           option is specified
+
+/var/log/apache2/access_logs
+
+    With no FILE, or when FILE is -, read standard input.
+
+| [...] |
+
+    Pipelines
+        A  pipeline is a sequence of one or more commands separated by one of the control operators | or |&.  The
+        format for a pipeline is:
+
+               [time [-p]] [ ! ] command [ [|⎪|&] command2 ... ]
+
+        The standard output of command is connected  via  a  pipe  to  the  standard  input  of  command2.   This
+        connection  is performed before any redirections specified by the command (see REDIRECTION below).  If |&
+        is used, the standard error of command is connected to command2's standard input through the pipe; it  is
+        shorthand  for  2>&1  |.   This  implicit  redirection  of  the  standard  error  is  performed after any
+        redirections specified by the command.
+
+        The return status of a pipeline is the exit status of the last command, unless  the  pipefail  option  is
+        enabled.   If  pipefail  is  enabled,  the  pipeline's return status is the value of the last (rightmost)
+        command to exit with a non-zero status, or zero if all commands exit successfully.  If the reserved  word
+        !   precedes  a  pipeline, the exit status of that pipeline is the logical negation of the exit status as
+        described above.  The shell waits for all commands in the pipeline to terminate before returning a value.
+
+        If the time reserved word precedes a pipeline, the elapsed as well as user and system  time  consumed  by
+        its execution are reported when the pipeline terminates.  The -p option changes the output format to that
+        specified by POSIX.  When the shell is in posix mode, it does not recognize time as a  reserved  word  if
+        the  next  token begins with a `-'.  The TIMEFORMAT variable may be set to a format string that specifies
+        how the timing information should be displayed; see the description of TIMEFORMAT under  Shell  Variables
+        below.
+
+        When the shell is in posix mode, time may be followed by a newline.  In this case, the shell displays the
+        total user and system time consumed by the shell and its children.  The TIMEFORMAT variable may  be  used
+        to specify the format of the time information.
+
+        Each command in a pipeline is executed as a separate process (i.e., in a subshell).
+
+uniq
+
+    report or omit repeated lines
+
+    [ uniq -> https://explainshell.com/explain/1/uniq ]
+
+-c
+
+    -c, --count
+           prefix lines by the number of occurrences
+
+sort
+
+    sort lines of text files
+
+    [ sort -> https://explainshell.com/explain/1/sort ]
+
+-n
+
+    -n, --numeric-sort
+           compare according to string numerical value

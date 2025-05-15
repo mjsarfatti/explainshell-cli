@@ -1,0 +1,1 @@
+tar zcf - some-dir | ssh some-server "cd /; tar xvzf -"

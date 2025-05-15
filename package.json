@@ -11,6 +11,7 @@
     "build": "tsc",
     "start": "node dist/main.js",
     "dev": "tsx watch src/main.ts",
+    "test": "tsx --test tests/main.test.ts",
     "prestart": "npm run build",
     "prepublishOnly": "npm run build"
   },

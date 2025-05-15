@@ -1,0 +1,53 @@
+ssh
+
+    OpenSSH SSH client (remote login program)
+
+    [ ssh -> https://explainshell.com/explain/1/ssh ]
+
+-i keyfile
+
+    -i identity_file
+            Selects a file from which the identity (private key) for public key authentication is read.  The
+            default is ~/.ssh/identity for protocol version 1, and ~/.ssh/id_dsa, ~/.ssh/id_ecdsa and
+            ~/.ssh/id_rsa for protocol version 2.  Identity files may also be specified on a per-host basis in
+            the configuration file.  It is possible to have multiple -i options (and multiple identities
+            specified in configuration files).  ssh will also try to load certificate information from the
+            filename obtained by appending -cert.pub to identity filenames.
+
+-f
+
+    -f      Requests ssh to go to background just before command execution.  This is useful if ssh is going to
+            ask for passwords or passphrases, but the user wants it in the background.  This implies -n.  The
+            recommended way to start X11 programs at a remote site is with something like ssh -f host xterm.
+
+            If the ExitOnForwardFailure configuration option is set to “yes”, then a client started with -f
+            will wait for all remote port forwards to be successfully established before placing itself in the
+            background.
+
+-N
+
+    -N      Do not execute a remote command.  This is useful for just forwarding ports (protocol version 2
+            only).
+
+-L 1234:www.google.com:80
+
+    -L [bind_address:]port:host:hostport
+            Specifies that the given port on the local (client) host is to be forwarded to the given host and
+            port on the remote side.  This works by allocating a socket to listen to port on the local side,
+            optionally bound to the specified bind_address.  Whenever a connection is made to this port, the
+            connection is forwarded over the secure channel, and a connection is made to host port hostport
+            from the remote machine.  Port forwardings can also be specified in the configuration file.  IPv6
+            addresses can be specified by enclosing the address in square brackets.  Only the superuser can
+            forward privileged ports.  By default, the local port is bound in accordance with the GatewayPorts
+            setting.  However, an explicit bind_address may be used to bind the connection to a specific
+            address.  The bind_address of “localhost” indicates that the listening port be bound for local use
+            only, while an empty address or ‘*’ indicates that the port should be available from all
+            interfaces.
+
+host
+
+    ssh connects and logs into the specified hostname (with optional user name).  The user must prove his/her
+    identity to the remote machine using one of several methods depending on the protocol version used (see
+    below).
+
+    If command is specified, it is executed on the remote host instead of a login shell.

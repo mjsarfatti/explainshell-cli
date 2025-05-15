@@ -1,0 +1,40 @@
+find
+
+    search for files in a directory hierarchy
+
+    [ find -> https://explainshell.com/explain/1/find ]
+
+.
+
+    find [-H] [-L] [-P] [-D debugopts] [-Olevel] [path...] [expression]
+
+-type f
+
+    -type c
+           File is of type c:
+    
+           b      block (buffered) special
+    
+           c      character (unbuffered) special
+    
+           d      directory
+    
+           p      named pipe (FIFO)
+    
+           f      regular file
+    
+           l      symbolic link; this is never true if the -L option or the  -follow  option  is  in  effect,
+                  unless the symbolic link is broken.  If you want to search for symbolic links when -L is in
+                  effect, use -xtype.
+    
+           s      socket
+    
+           D      door (Solaris)
+
+-print0
+
+    -print0
+           True;  print  the  full file name on the standard output, followed by a null character (instead of
+           the newline character that -print uses).  This allows file names that contain  newlines  or  other
+           types  of  white space to be correctly interpreted by programs that process the find output.  This
+           option corresponds to the -0 option of xargs. 

@@ -1,0 +1,45 @@
+true
+
+    do nothing, successfully
+
+    [ true -> https://explainshell.com/explain/1/true ]
+
+&& [...] ||
+
+    AND and OR lists are sequences of one of more pipelines separated by the &&  and  ||  control  operators,
+    respectively.  AND and OR lists are executed with left associativity.  An AND list has the form
+    
+           command1 && command2
+    
+    command2 is executed if, and only if, command1 returns an exit status of zero.
+    
+    An OR list has the form
+    
+           command1 || command2
+    
+    command2  is  executed  if and only if command1 returns a non-zero exit status.  The return status of AND
+    and OR lists is the exit status of the last command executed in the list.
+
+{ [...] } [...] { [...] }
+
+    { list; }
+           list is simply executed in the current shell environment.  list must be terminated with a  newline
+           or  semicolon.   This  is known as a group command.  The return status is the exit status of list.
+           Note that unlike the metacharacters ( and ), { and } are reserved words and  must  occur  where  a
+           reserved  word  is permitted to be recognized.  Since they do not cause a word break, they must be
+           separated from list by whitespace or another shell metacharacter.
+
+echo [...] echo
+
+    display a line of text
+
+    [ echo -> https://explainshell.com/explain/1/echo ]
+
+success [...] failed
+
+    Echo the STRING(s) to standard output.
+
+; [...] ;
+
+    Commands separated  by  a ; are executed sequentially; the shell waits for each command to terminate in turn.  The
+    return status is the exit status of the last command executed. 

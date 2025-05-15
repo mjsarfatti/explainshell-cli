@@ -1,0 +1,24 @@
+tar
+
+    The GNU version of the tar archiving utility
+
+    [ tar -> https://explainshell.com/explain/1/tar ]
+
+x
+
+    -x, --extract, --get
+          extract files from an archive
+
+z
+
+    -z, --gzip, --gunzip --ungzip
+
+v
+
+    -v, --verbose
+          verbosely list files processed
+
+f archive.tar.gz
+
+    -f, --file ARCHIVE
+          use archive file or device ARCHIVE 
