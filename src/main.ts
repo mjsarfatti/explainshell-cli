@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import * as cheerio from "cheerio";
+import chalk from "chalk";
 
 interface CommandPart {
   text: string; // This will be the command segment with "..." for expansions
@@ -17,9 +18,14 @@ interface ParsedExplanation {
   helpTexts: Map<string, string>; // Map helpref ID to help text
 }
 
-async function fetchExplanationHTML(command: string): Promise<string> {
+function getUrl(command: string): string {
   const query = encodeURIComponent(command);
-  const url = `https://explainshell.com/explain?cmd=${query}`;
+  return `https://explainshell.com/explain?cmd=${query}`;
+}
+
+async function fetchExplanationHTML(command: string): Promise<string> {
+  const url = getUrl(command);
+
   try {
     const { data } = await axios.get(url);
     return data;
@@ -214,10 +220,15 @@ async function mainCli() {
     process.exit(1);
   }
   const commandToExplain = args.join(" ");
-  // console.log(`Fetching explanation for: \\"${commandToExplain}\\"...\\n`); // This was the original log line. Keep or remove as per preference.
+  const url = getUrl(commandToExplain);
+
+  console.log(
+    chalk.cyan(`\n❯ Fetching explanation for: "${commandToExplain}"\n`)
+  );
 
   try {
     const output = await getExplanation(commandToExplain);
+    console.log(chalk.bold.yellow(`${commandToExplain}\n`));
     console.log(output);
   } catch (error) {
     // Log the error message from the thrown error
@@ -227,6 +238,8 @@ async function mainCli() {
     );
     process.exit(1);
   }
+
+  console.log(chalk.green(`\n✓ Fetched from: ${url}`));
 }
 
 // Conditionally run mainCli only if the script is executed directly
