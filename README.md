@@ -6,6 +6,10 @@ The missing CLI for [explainshell.com](https://explainshell.com).
 
 `explainshell-cli` takes any shell command as input and retrieves a detailed explanation from [explainshell.com](https://explainshell.com), breaking down each part of the command with its corresponding documentation in a CLI-friendly way.
 
+## Example
+
+![explainshell-cli terminal example](./images/terminal.png)
+
 ## Installation
 
 _NOTE: only installation **from source** is available as of right now - I'm working on Homebrew and npm._
