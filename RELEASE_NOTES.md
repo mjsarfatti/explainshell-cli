@@ -1,3 +1,10 @@
+## v0.0.5 (2025-10-30)
+
+Fix: actually run the script when installed
+Fix: RFC3986-compliant URL escape when printing to terminal
+
+---
+
 ## v0.0.4 (2025-10-30)
 
 Testing release automation

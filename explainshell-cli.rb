@@ -2,8 +2,8 @@
 class ExplainshellCli < Formula
   desc "Explain shell commands using explainshell.com"
   homepage "https://github.com/mjsarfatti/explainshell-cli"
-  url "https://github.com/mjsarfatti/explainshell-cli/releases/download/v0.0.4/explainshell-cli-v0.0.4.tar.gz"
-  sha256 "3a5a67a5504a286cbd4be97f1ca4fb842bf439a0aa8f39e137d5534b54e28294"
+  url "https://github.com/mjsarfatti/explainshell-cli/releases/download/v0.0.5/explainshell-cli-v0.0.5.tar.gz"
+  sha256 "6c87bf30563c37df80925801e68542e40ddc9507803e492a6b15d368f286ed86"
   license "MIT"
 
   depends_on "node"
