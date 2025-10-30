@@ -14,13 +14,12 @@
     "test": "tsx --test tests/main.test.ts",
     "prestart": "npm run build",
     "prepublishOnly": "npm run build",
-    "release:patch": "npm version patch && npm run release:build",
-    "release:minor": "npm version minor && npm run release:build",
-    "release:major": "npm version major && npm run release:build",
-    "release:build": "npm run build && npm run release:tarball && npm run release:sha",
-    "release:tarball": "tar -czf explainshell-cli-v$(node -p 'require(\"./package.json\").version').tar.gz --exclude=node_modules --exclude=dist/.* --exclude=.git --exclude=tests .",
-    "release:sha": "node -e \"const fs=require('fs'); const v=require('./package.json').version; const file='explainshell-cli-v'+v+'.tar.gz'; const hash=require('crypto').createHash('sha256').update(fs.readFileSync(file)).digest('hex'); console.log('SHA256: ' + hash); fs.appendFileSync('RELEASE_NOTES.md', '\\n\\nVersion ' + v + '\\nTarball: ' + file + '\\nSHA256: ' + hash + '\\n');\"",
-    "release:info": "node -e \"const v=require('./package.json').version; const file='explainshell-cli-v'+v+'.tar.gz'; console.log('\\nRelease Info:'); console.log('Version:', v); console.log('Tarball:', file); console.log('\\nUpdate explainshell-cli.rb:'); console.log('url \\\"https://github.com/mjsarfatti/explainshell-cli/releases/download/v' + v + '/' + file + '\\\"'); const fs=require('fs'); if(fs.existsSync(file)){const hash=require('crypto').createHash('sha256').update(fs.readFileSync(file)).digest('hex'); console.log('sha256 \\\"' + hash + '\\\"');}\"",
+    "version:patch": "npm version patch --no-git-tag-version",
+    "version:minor": "npm version minor --no-git-tag-version",
+    "version:major": "npm version major --no-git-tag-version",
+    "release:patch": "npm run version:patch && node scripts/release.js",
+    "release:minor": "npm run version:minor && node scripts/release.js",
+    "release:major": "npm run version:major && node scripts/release.js",
     "release": "npm run release:patch"
   },
   "keywords": [
@@ -30,7 +29,7 @@
     "typescript"
   ],
   "author": "Manuele J Sarfatti",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "axios": "^1.9.0",
     "chalk": "^5.4.1",

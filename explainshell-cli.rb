@@ -1,10 +1,10 @@
 # explainshell-cli.rb
 class ExplainshellCli < Formula
   desc "Explain shell commands using explainshell.com"
-  homepage "https://github.com/mjsarfatti/explainshell-cli" # Replace with your repo URL
-  url "https://github.com/mjsarfatti/explainshell-cli/archive/v0.1.0.tar.gz" # URL to the release tarball
-  sha256 "CHECKSUM_OF_THE_TARBALL" # Will be calculated after you create a release
-  license "ISC" # Or your chosen license
+  homepage "https://github.com/mjsarfatti/explainshell-cli"
+  url "https://github.com/mjsarfatti/explainshell-cli/archive/v0.1.0.tar.gz"
+  sha256 "CHECKSUM_OF_THE_TARBALL"
+  license "MIT"
 
   depends_on "node"
 

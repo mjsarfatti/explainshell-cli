@@ -15,3 +15,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Releases
+*.tar.gz
