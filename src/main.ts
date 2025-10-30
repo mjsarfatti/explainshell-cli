@@ -250,5 +250,10 @@ async function mainCli() {
   console.log(chalk.green(`\n✓ Fetched from: ${url}`));
 }
 
-// Run the CLI
-mainCli();
+// Run CLI unless executed from test file
+if (
+  !process.argv[1]?.endsWith("/tests/main.test.ts") &&
+  !process.argv[1]?.endsWith("\\tests\\main.test.ts")
+) {
+  mainCli();
+}
