@@ -1,6 +1,6 @@
 {
   "name": "explainshell-cli",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "A CLI tool to get explanations from explainshell.com",
   "main": "dist/main.js",
   "type": "module",
@@ -17,9 +17,9 @@
     "version:patch": "npm version patch --no-git-tag-version",
     "version:minor": "npm version minor --no-git-tag-version",
     "version:major": "npm version major --no-git-tag-version",
-    "release:patch": "npm run version:patch && node scripts/release.js",
-    "release:minor": "npm run version:minor && node scripts/release.js",
-    "release:major": "npm run version:major && node scripts/release.js",
+    "release:patch": "npm run version:patch && tsx scripts/release.ts",
+    "release:minor": "npm run version:minor && tsx scripts/release.ts",
+    "release:major": "npm run version:major && tsx scripts/release.ts",
     "release": "npm run release:patch"
   },
   "keywords": [

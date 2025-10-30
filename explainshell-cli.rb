@@ -2,8 +2,8 @@
 class ExplainshellCli < Formula
   desc "Explain shell commands using explainshell.com"
   homepage "https://github.com/mjsarfatti/explainshell-cli"
-  url "https://github.com/mjsarfatti/explainshell-cli/archive/v0.1.0.tar.gz"
-  sha256 "CHECKSUM_OF_THE_TARBALL"
+  url "https://github.com/mjsarfatti/explainshell-cli/releases/download/v0.0.4/explainshell-cli-v0.0.4.tar.gz"
+  sha256 "3a5a67a5504a286cbd4be97f1ca4fb842bf439a0aa8f39e137d5534b54e28294"
   license "MIT"
 
   depends_on "node"
