@@ -18,8 +18,16 @@ interface ParsedExplanation {
   helpTexts: Map<string, string>; // Map helpref ID to help text
 }
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent#encoding_for_rfc3986
+function encodeRFC3986URIComponent(str: string): string {
+  return encodeURIComponent(str).replace(
+    /[!'()*]/g,
+    (c) => `%${c.charCodeAt(0).toString(16).toUpperCase()}`
+  );
+}
+
 function getUrl(command: string): string {
-  const query = encodeURIComponent(command);
+  const query = encodeRFC3986URIComponent(command);
   return `https://explainshell.com/explain?cmd=${query}`;
 }
 
@@ -242,12 +250,5 @@ async function mainCli() {
   console.log(chalk.green(`\n✓ Fetched from: ${url}`));
 }
 
-// Conditionally run mainCli only if the script is executed directly
-// (ESM way to check if module is main)
-// Resolve paths to be robust
-const scriptPath = new URL(import.meta.url).pathname;
-const executedScriptPath = process.argv[1];
-
-if (executedScriptPath === scriptPath) {
-  mainCli();
-}
+// Run the CLI
+mainCli();
